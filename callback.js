@@ -6,10 +6,15 @@ function sendEmail(body, to, callback) {
             ${body}
             ------------------------
         `)
-        callback();
+        callback("OK", 10, "8s");
     },2000)
 }
 console.log("Send...");
-sendEmail("Hello world!", "guioliveira@hotmail.com", () => {
-    console.log("your email has been send! ");
+sendEmail("Hello world!", "guioliveira@hotmail.com", (status, amount, time) => {
+    console.log(`
+        Your email has been send! 
+        status: ${status},
+        amount: ${amount},
+        time: ${time}
+    `)
 });

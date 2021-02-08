@@ -6,15 +6,22 @@ function sendEmail(body, to, callback) {
             ${body}
             ------------------------
         `)
-        callback("OK", 10, "8s");
+        var error = true;
+        if(error) {
+            callback("Email has been not send!");
+        }
+        else {
+            callback();
+        }
+        
     },2000)
 }
 console.log("Send...");
-sendEmail("Hello world!", "guioliveira@hotmail.com", (status, amount, time) => {
-    console.log(`
-        Your email has been send! 
-        status: ${status},
-        amount: ${amount},
-        time: ${time}
-    `)
+sendEmail("Hello world!", "guioliveira@hotmail.com", (error) => {
+    if(error == undefined ) {
+        console.log(" O email foi enviado com sucesso!");
+    }
+    else {
+        console.log(error);
+    }
 });

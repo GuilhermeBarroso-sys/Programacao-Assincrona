@@ -1,3 +1,4 @@
+// promises aninhadas
 function getId() {
     return new Promise((resolve,reject) => {
         setTimeout(() => {
@@ -40,6 +41,7 @@ getId().then(({id}) => {
                     info:
                     Time: ${time}
                     To: ${to}
+                    User id: ${id}
                 `)
         })
     })

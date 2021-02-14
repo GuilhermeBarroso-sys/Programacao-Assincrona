@@ -31,8 +31,28 @@ function sendEmail(body, to) {
         },2000);
     })
 }
-
-
+async function send() {
+    
+    try{
+        var id = await getId();
+        var email = await consultID(id);
+   
+        sendEmail("Hello World!", email).then(({time,to}) => {
+        console.log(`
+                    Sucess! Email has been send!
+                    info:
+                    Time: ${time}
+                    To: ${to}
+                    User id: ${id}
+                `)
+        })
+    }
+    catch(e) {
+        console.log("oi");
+    }
+}
+send();
+/*
 getId().then(({id}) => {
     consultID(id).then((email) => {
         sendEmail("Hello World!", email).then(({time, to}) => {
@@ -46,3 +66,4 @@ getId().then(({id}) => {
         })
     })
 })
+*/
